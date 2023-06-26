@@ -21,7 +21,6 @@ public class Main {
         // если текст соответствует критериям.
         new Thread(() -> {
             // сгенерированное слово является палиндромом,т. е. читается одинаково как слева направо, так и справа налево, например, abba
-            StringBuilder reverseStringBuilder = new StringBuilder();
             for (String text : texts) {
                 if (isPalindrome(text)) {
                     checkTextLengthAndIncrementAtomicValue(text);
@@ -106,15 +105,9 @@ public class Main {
     // Функция проверяет длину текста и увеличивает соответствующую переменную.
     private static void checkTextLengthAndIncrementAtomicValue(String text) {
         switch (text.length()) {
-            case 3:
-                lengthThree.getAndIncrement();
-                break;
-            case 4:
-                lengthFour.getAndIncrement();
-                break;
-            case 5:
-                lengthFive.getAndIncrement();
-                break;
+            case 3 -> lengthThree.getAndIncrement();
+            case 4 -> lengthFour.getAndIncrement();
+            case 5 -> lengthFive.getAndIncrement();
         }
     }
 }
